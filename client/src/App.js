@@ -9,10 +9,12 @@ import {
 import LandingPage from './components/views/LandingPage';
 import Login from './components/views/user/Login';
 import Register from './components/views/user/Register';
+import Auth from './hoc/auth';
 
 
 
 function App() {
+
   return (
     <Router>
       <div>
@@ -33,9 +35,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/" component = {LandingPage} />
-          <Route exact path="/login" component = {Login} />
-          <Route exact path="/register" component = {Register} />
+          <Route exact path="/" component = {Auth(LandingPage, null)} />
+          <Route exact path="/login" component = {Auth(Login,false)} />
+          <Route exact path="/register" component = {Auth(Register, false)} />
         </Switch>
       </div>
     </Router>
